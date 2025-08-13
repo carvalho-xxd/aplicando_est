@@ -16,7 +16,7 @@ def calcular_bonus(pontos_totais):
     else:
         return 0
 
-produtos = ["Ox", "Neutrox", "Francis", "Minuano", "Matinset"]
+produtos = ['produto1','produto2', 'produto3', 'produto4', 'produto5','produto6','produto7','produto8','produto9']
 pontos_totais = 0
 
 print("Sistema de Pontuação - Verificação de Bônus\n")
@@ -47,5 +47,35 @@ for produto in produtos:
     pontos_totais += pontos
 
 print(f"Pontuação total da loja: {pontos_totais}")
+bonus = calcular_bonus(pontos_totais)
+print(f"Bônus do promotor: {bonus}%")
+
+valor_unitario_ponto_extra = 5
+
+while True:
+    ponto_extra = input("A loja possui ponto extra? (s/n): ").strip().lower()
+    if ponto_extra in ['s', 'n']:
+        break
+    else:
+        print("Digite apenas 's' ou 'n'.")
+
+if ponto_extra == 's':
+    while True:
+        try:
+            pontos_extra = int(input("Quantos pontos extras a loja possui? "))
+            if pontos_extra >= 0:
+                break
+            else:
+                print("Digite um número inteiro maior ou igual a zero.")
+        except ValueError:
+            print("Por favor, digite um número válido.")
+
+    pontos_adicionados = pontos_extra * valor_unitario_ponto_extra
+    pontos_totais += pontos_adicionados
+    print(f"Pontos extras adicionados: {pontos_adicionados}")
+else:
+    print("Nenhum ponto extra adicionado.")
+
+print(f"\nPontuação total da loja (com ponto extra): {pontos_totais}")
 bonus = calcular_bonus(pontos_totais)
 print(f"Bônus do promotor: {bonus}%")
